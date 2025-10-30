@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saloni Pawar | Data Analyst Portfolio</title>
+    <style>
+        /* Base Styling - Dark Mode */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a2e; /* Deep dark blue background */
+            color: #ffffff; /* High contrast white text */
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px 40px;
+            background-color: #16213e; /* Slightly lighter dark blue for content area */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+            border-radius: 10px;
+        }
+        
+        /* Primary Accent Color - Cyan/Blue */
+        .accent-color {
+            color: #00bcd4; 
+        }
+
+        /* Header & Headings */
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #00bcd4; 
+            margin-bottom: 30px;
+        }
+        header h1 {
+            color: #ffffff; 
+            margin-bottom: 5px;
+            font-size: 2.8em;
+            text-transform: uppercase;
+        }
+        header p {
+            color: #a8dadc;
+            font-size: 1.2em;
+        }
+        section {
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        section h2 {
+            color: #00bcd4;
+            border-left: 5px solid #00bcd4;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-transform: uppercase;
+        }
+
+        /* Skills Grid Styling - using chips */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .skill-category {
+            background-color: #1a2a4e; /* Darker blue block */
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .skill-category h4 {
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .skill-category li {
+            background-color: #2a3d66; /* Chip background */
+            display: inline-block;
+            padding: 5px 12px;
+            margin: 4px 4px 4px 0;
+            border-radius: 20px; 
+            font-size: 0.9em;
+            color: #a8dadc;
+            list-style: none;
+        }
+
+        /* Project Card Styling */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .project-card {
+            border: 1px solid #2a3d66; 
+            padding: 20px; 
+            border-radius: 8px;
+            background-color: #1a2a4e;
+        }
+        .project-card h3 {
+            color: #00bcd4; 
+            margin-top: 0;
+            border-bottom: 1px dashed #2a3d66;
+            padding-bottom: 5px;
+        }
+        .project-card p.subtitle {
+            font-style: italic; 
+            color: #a8dadc;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+        .project-card a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #ffffff; 
+            text-decoration: none; 
+            font-weight: bold;
+            border: 2px solid #00bcd4;
+            background-color: #00bcd4;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: opacity 0.2s;
+        }
+        .project-card a:hover {
+            opacity: 0.8;
+            background-color: transparent;
+            color: #00bcd4;
+        }
+        
+        /* Experience Styling */
+        .job-role {
+            padding: 15px;
+            border-left: 4px solid #00bcd4;
+            margin-bottom: 25px;
+            background-color: #1a2a4e;
+            border-radius: 4px;
+        }
+        .job-role h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: #ffffff;
+        }
+
+        /* Contact & Footer */
+        .contact-links a {
+            text-decoration: none; 
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-right: 15px;
+            transition: background-color 0.2s;
+        }
+        .contact-links a:nth-child(1) { /* GitHub */
+            color: #ffffff;
+            background-color: #212121;
+        }
+        .contact-links a:nth-child(2) { /* LinkedIn */
+            color: #ffffff;
+            background-color: #0077b5;
+        }
+        .contact-links a:nth-child(3) { /* Email */
+            color: #00bcd4;
+            border: 1px solid #00bcd4;
+            background-color: #16213e;
+        }
+        .contact-links a:hover {
+            opacity: 0.8;
+        }
+        footer {
+            text-align: center; 
+            padding: 20px; 
+            color: #a8dadc; 
+            font-size: 0.9em;
+            border-top: 1px solid #2a3d66;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Saloni Pawar</h1>
+            <p>Data Analyst | <span class="accent-color">SQL</span>, <span class="accent-color">Python</span>, Reporting & Business Intelligence</p>
+        </header>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am a **Motivated and quick-learning** individual with a strong foundation in **SQL, Python, and Excel**. I specialize in writing efficient SQL queries, understanding database structures, and working with data to support analysis and reporting.</p>
+            <p>I am committed to applying **analytical thinking** to solve real-world problems and am eager to grow my skills in a data-driven, professional environment. My background includes both in-depth academic study and practical experience in data processing and validation.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Tech Stack & Skills</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-category">
+                    <h4>Programming Languages</h4>
+                    <ul style="padding: 0; margin: 0;">
+                        <li>Python</li>
+                        <li>Basic HTML</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Data Analysis & Tools</h4>
+                    <ul style="padding: 0; margin: 0;">
+                        <li>Python (NumPy, Pandas)</li>
+                        <li>Advanced Excel (VLOOKUP, Pivot Tables)</li>
+                        <li>Logical Thinking</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Database & Systems</h4>
+                    <ul style="padding: 0; margin: 0;">
+                        <li>SQL</li>
+                        <li>Snowflake</li>
+                        <li>Linux/Unix (Basic Commands)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Collaboration & Reporting</h4>
+                    <ul style="padding: 0; margin: 0;">
+                        <li>Stakeholder Collaboration</li>
+                        <li>Requirements Analysis</li>
+                        <li>Data Validation</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <h3>Netflix Content Trends Analysis</h3>
+                    <p class="subtitle">Data Analysis & Visualization</p>
+                    <p>Performed data analysis on a Netflix dataset to visualize trends in content type, duration, genres, and country-wise production.</p>
+                    
+                    <h4 style="font-size: 1em; margin-bottom: 5px;">Technologies:</h4>
+                    <ul style="padding: 0;">
+                        <li>Python (Pandas, Matplotlib, Seaborn)</li>
+                    </ul>
+                    
+                    <h4 style="font-size: 1em; margin-bottom: 5px; margin-top: 10px;">Key Outcome:</h4>
+                    <p style="font-size: 0.9em;">Demonstrated strong skills in **data visualization** and wrangling to deliver clear strategic insights.</p>
+                    <a href="https://github.com/Salonii07" target="_blank">View Code</a>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Chess Game Logic Engine</h3>
+                    <p class="subtitle">Programming & Algorithm Design</p>
+                    <p>Developed a complete chess game using Python, focusing on the custom chess engine logic for the backend.</p>
+                    
+                    <h4 style="font-size: 1em; margin-bottom: 5px;">Technologies:</h4>
+                    <ul style="padding: 0;">
+                        <li>Python (Pygame, Custom Logic)</li>
+                    </ul>
+                    
+                    <h4 style="font-size: 1em; margin-bottom: 5px; margin-top: 10px;">Key Outcome:</h4>
+                    <p style="font-size: 0.9em;">Applied **Object-Oriented Programming (OOP)** principles and complex logical thinking to build a functional application.</p>
+                    <a href="https://github.com/Salonii07" target="_blank">View Code</a>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="job-role">
+                <h3 style="color: #ffffff; margin-bottom: 5px;">Data Specialist | Here Technology Pvt. Ltd. | Aug 2022 – Sep 2023</h3>
+                <ul style="padding-left: 20px; margin-top: 0;">
+                    <li>**Data Analysis & Cleaning:** Collected, cleaned, and analyzed large sets of data.</li>
+                    <li>**Reporting & Insights:** Generated **daily Excel-based reports** with insights on trends.</li>
+                    <li>**Data Validation:** Utilized internal tools like Earthscape and ATLAS for data validation and reporting.</li>
+                </ul>
+            </div>
+            
+            <div class="job-role">
+                <h3 style="color: #ffffff; margin-bottom: 5px;">Intern - Operational Application (IT) | Sulzer Tech India Pvt. Ltd. | Feb 2025 – May 2025</h3>
+                <ul style="padding-left: 20px; margin-top: 0;">
+                    <li>**SQL Database Tasks:** Wrote **SQL queries in Snowflake** for data extraction and validation.</li>
+                    <li>**Data Transformation:** Explored basic data transformation using **DBT** with guidance.</li>
+                    <li>**System Analysis:** Analyzed phishing attempts using InfoSec IQ and MXToolbox, learning core domain security concepts.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>Education & Certifications</h2>
+            
+            <div style="display: flex; justify-content: space-between;">
+                
+                <div style="width: 48%;">
+                    <h3 style="color: #ffffff; margin-bottom: 10px;">Academic Background</h3>
+                    <p><strong>Master of Computer Application (MCA)</strong></p>
+                    <p style="margin-top: -10px; color: #a8dadc;">University of Mumbai | CGPA: 8.02/10</p>
+                    
+                    <p><strong>Bachelor of Science in Information Technology (B.Sc. IT)</strong></p>
+                    <p style="margin-top: -10px; color: #a8dadc;">University of Mumbai | CGPA: 8.13/10</p>
+                </div>
+                
+                <div style="width: 48%;">
+                    <h3 style="color: #ffffff; margin-bottom: 10px;">Relevant Certifications</h3>
+                    <ul style="list-style: square; padding-left: 20px; color: #a8dadc;">
+                        <li>Python certification</li>
+                        <li>MySQL certification</li>
+                        <li>SQL (basic) from HackeRank</li>
+                        <li>Data Analytics from Anudeep Foundation</li>
+                        <li>Excel to SQL from LinkedIn Learning</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Connect with Me</h2>
+            <p>I am actively seeking new opportunities. Let's connect!</p>
+            <div class="contact-links" style="margin-top: 15px;">
+                <a href="https://github.com/Salonii07" target="_blank">
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/saloni-pawar-0b0787279" target="_blank">
+                    LinkedIn
+                </a>
+                <a href="mailto:pawar.saloni07.2001@gmail.com">
+                    Email Me
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Saloni Pawar. Built for professional presentation.</p>
+        </footer>
+    </div>
+</body>
+</html>
