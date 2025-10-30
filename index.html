@@ -1,344 +1,388 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saloni Pawar | Data Analyst Portfolio</title>
+    <title>Saloni Pawar | Data Analysis & Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Base Styling - Dark Mode */
+        /* BASE STYLES & CUSTOM COMPONENTS */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a2e; /* Deep dark blue background */
-            color: #ffffff; /* High contrast white text */
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background-color: #0A192F; /* Deep Navy Background */
+            color: #8892b0; /* Light Gray Text */
+            overflow-x: hidden;
         }
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px 40px;
-            background-color: #16213e; /* Slightly lighter dark blue for content area */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Deeper shadow */
-            border-radius: 10px;
+        .font-mono {
+            font-family: 'Roboto Mono', monospace; /* Code font look */
         }
-        
-        /* Primary Accent Color - Cyan/Blue */
-        .accent-color {
-            color: #00bcd4; 
+        .highlight {
+            color: #64ffda; /* Cyan Accent Color */
         }
-
-        /* Header & Headings */
-        header {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #00bcd4; 
-            margin-bottom: 30px;
+        /* Style for Project/Experience cards */
+        .glass-card {
+            background: rgba(31, 41, 55, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
         }
-        header h1 {
-            color: #ffffff; 
-            margin-bottom: 5px;
-            font-size: 2.8em;
-            text-transform: uppercase;
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
         }
-        header p {
-            color: #a8dadc;
-            font-size: 1.2em;
-        }
-        section {
-            padding: 20px 0;
-            margin-bottom: 30px;
-        }
-        section h2 {
-            color: #00bcd4;
-            border-left: 5px solid #00bcd4;
-            padding-left: 15px;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            text-transform: uppercase;
-        }
-
-        /* Skills Grid Styling - using chips */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .skill-category {
-            background-color: #1a2a4e; /* Darker blue block */
-            padding: 15px;
-            border-radius: 8px;
-        }
-        .skill-category h4 {
-            color: #ffffff;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-            font-weight: 600;
-        }
-        .skill-category li {
-            background-color: #2a3d66; /* Chip background */
-            display: inline-block;
-            padding: 5px 12px;
-            margin: 4px 4px 4px 0;
-            border-radius: 20px; 
-            font-size: 0.9em;
-            color: #a8dadc;
-            list-style: none;
-        }
-
-        /* Project Card Styling */
-        .project-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        .project-card {
-            border: 1px solid #2a3d66; 
-            padding: 20px; 
-            border-radius: 8px;
-            background-color: #1a2a4e;
-        }
-        .project-card h3 {
-            color: #00bcd4; 
-            margin-top: 0;
-            border-bottom: 1px dashed #2a3d66;
-            padding-bottom: 5px;
-        }
-        .project-card p.subtitle {
-            font-style: italic; 
-            color: #a8dadc;
-            margin-top: -10px;
-            margin-bottom: 15px;
-        }
-        .project-card a {
-            display: inline-block;
-            margin-top: 15px;
-            color: #ffffff; 
-            text-decoration: none; 
-            font-weight: bold;
-            border: 2px solid #00bcd4;
-            background-color: #00bcd4;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: opacity 0.2s;
-        }
-        .project-card a:hover {
-            opacity: 0.8;
+        /* Call to Action Button */
+        .cta-button {
+            border: 1px solid #64ffda;
+            color: #64ffda;
             background-color: transparent;
-            color: #00bcd4;
+            border-radius: 4px;
+            padding: 0.75rem 1.5rem;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            transition: all 0.25s ease;
+        }
+        .cta-button:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+        /* Left Side Social Links line */
+        .side-element {
+            width: 40px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+        }
+        .side-element.left { left: 40px; right: auto; }
+        .side-element ul { list-style: none; margin: 0; padding: 0; }
+        .side-element li:not(:last-child) { margin-bottom: 20px; }
+        .side-element a {
+            display: inline-block;
+            transition: all 0.25s ease;
+            color: #a8b2d1;
+        }
+        .side-element a:hover {
+            transform: translateY(-3px);
+            color: #64ffda;
+        }
+        .side-element::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 90px;
+            margin: 20px auto 0;
+            background-color: #a8b2d1;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 1080px) {
+            .side-element.left { left: 20px; }
+        }
+        @media (max-width: 768px) {
+            .side-element { display: none; }
         }
         
-        /* Experience Styling */
-        .job-role {
-            padding: 15px;
-            border-left: 4px solid #00bcd4;
-            margin-bottom: 25px;
-            background-color: #1a2a4e;
-            border-radius: 4px;
+        /* Optional: Adding a subtle animation for visual appeal */
+        @keyframes glowAnimation {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(100, 255, 218, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
+            }
         }
-        .job-role h3 {
-            margin-top: 0;
-            font-size: 1.2em;
-            color: #ffffff;
-        }
-
-        /* Contact & Footer */
-        .contact-links a {
-            text-decoration: none; 
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-right: 15px;
-            transition: background-color 0.2s;
-        }
-        .contact-links a:nth-child(1) { /* GitHub */
-            color: #ffffff;
-            background-color: #212121;
-        }
-        .contact-links a:nth-child(2) { /* LinkedIn */
-            color: #ffffff;
-            background-color: #0077b5;
-        }
-        .contact-links a:nth-child(3) { /* Email */
-            color: #00bcd4;
-            border: 1px solid #00bcd4;
-            background-color: #16213e;
-        }
-        .contact-links a:hover {
-            opacity: 0.8;
-        }
-        footer {
-            text-align: center; 
-            padding: 20px; 
-            color: #a8dadc; 
-            font-size: 0.9em;
-            border-top: 1px solid #2a3d66;
-            margin-top: 30px;
+        .animate-glow {
+            animation: glowAnimation 4s ease-in-out infinite;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Saloni Pawar</h1>
-            <p>Data Analyst | <span class="accent-color">SQL</span>, <span class="accent-color">Python</span>, Reporting & Business Intelligence</p>
-        </header>
+<body class="leading-relaxed">
 
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I am a **Motivated and quick-learning** individual with a strong foundation in **SQL, Python, and Excel**. I specialize in writing efficient SQL queries, understanding database structures, and working with data to support analysis and reporting.</p>
-            <p>I am committed to applying **analytical thinking** to solve real-world problems and am eager to grow my skills in a data-driven, professional environment. My background includes both in-depth academic study and practical experience in data processing and validation.</p>
-        </section>
+    <div class="side-element left">
+        <ul class="flex flex-col items-center">
+            <li><a href="https://github.com/Salonii07" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a></li>
+            <li><a href="https://www.linkedin.com/in/saloni-pawar-0b0787279" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a></li>
+             <li><a href="mailto:pawar.saloni07.2001@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a></li>
+        </ul>
+    </div>
+    
+    <header id="navbar" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] sm:w-auto">
+         <div class="container mx-auto">
+             <div class="flex items-center justify-between bg-[#111827]/80 backdrop-blur-sm rounded-full shadow-lg p-2 sm:px-6 sm:py-2">
+                 <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-xl font-bold highlight font-mono hover:bg-slate-700 transition-colors flex-shrink-0">
+                     S
+                 </a>
+                 <nav class="hidden md:flex items-center space-x-6 text-slate-300 px-6">
+                     <a href="#about" class="hover:text-cyan-400 transition-colors duration-300 text-sm">About</a>
+                     <a href="#skills" class="hover:text-cyan-400 transition-colors duration-300 text-sm">Skills</a>
+                     <a href="#experience" class="hover:text-cyan-400 transition-colors duration-300 text-sm">Experience</a>
+                     <a href="#projects" class="hover:text-cyan-400 transition-colors duration-300 text-sm">Projects</a>
+                     <a href="#contact" class="hover:text-cyan-400 transition-colors duration-300 text-sm">Contact</a>
+                 </nav>
+                 <a href="mailto:pawar.saloni07.2001@gmail.com" class="hidden sm:inline-block cta-button">
+                    Get in Touch
+                 </a>
+             </div>
+         </div>
+     </header>
 
-        <section id="skills">
-            <h2>Tech Stack & Skills</h2>
-            <div class="skills-grid">
-                
-                <div class="skill-category">
-                    <h4>Programming Languages</h4>
-                    <ul style="padding: 0; margin: 0;">
-                        <li>Python</li>
-                        <li>Basic HTML</li>
-                    </ul>
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24">
+        <div class="relative z-10 max-w-6xl w-full px-6 md:px-8 text-center md:text-left">
+            <div class="max-w-3xl">
+                <p class="font-mono mb-4 text-cyan-400">Hi, my name is</p>
+                <h1 id="user-name" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-100 mb-4 leading-tight">Saloni Pawar.</h1>
+                <h2 id="user-title" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-400 mb-8">I build solutions with SQL, Python, and Data Insights.</h2>
+                <p id="user-summary" class="max-w-xl mx-auto md:mx-0 text-slate-400 text-base">
+                    [cite_start]I am a Motivated and quick-learning individual with a strong foundation in SQL, Python, and Advanced Excel[cite: 103]. [cite_start]I am skilled in writing efficient SQL queries, understanding database structures, and applying analytical thinking to solve real-world problems in a data-driven environment[cite: 104, 105].
+                </p>
+                <div class="mt-12 flex flex-col items-center text-center md:items-start">
+                    <a href="#projects" class="cta-button">View My Data Projects!</a>
                 </div>
-                
-                <div class="skill-category">
-                    <h4>Data Analysis & Tools</h4>
-                    <ul style="padding: 0; margin: 0;">
-                        <li>Python (NumPy, Pandas)</li>
-                        <li>Advanced Excel (VLOOKUP, Pivot Tables)</li>
-                        <li>Logical Thinking</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Database & Systems</h4>
-                    <ul style="padding: 0; margin: 0;">
-                        <li>SQL</li>
-                        <li>Snowflake</li>
-                        <li>Linux/Unix (Basic Commands)</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h4>Collaboration & Reporting</h4>
-                    <ul style="padding: 0; margin: 0;">
-                        <li>Stakeholder Collaboration</li>
-                        <li>Requirements Analysis</li>
-                        <li>Data Validation</li>
-                    </ul>
-                </div>
-                
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="project-grid">
-                
-                <div class="project-card">
-                    <h3>Netflix Content Trends Analysis</h3>
-                    <p class="subtitle">Data Analysis & Visualization</p>
-                    <p>Performed data analysis on a Netflix dataset to visualize trends in content type, duration, genres, and country-wise production.</p>
-                    
-                    <h4 style="font-size: 1em; margin-bottom: 5px;">Technologies:</h4>
-                    <ul style="padding: 0;">
-                        <li>Python (Pandas, Matplotlib, Seaborn)</li>
-                    </ul>
-                    
-                    <h4 style="font-size: 1em; margin-bottom: 5px; margin-top: 10px;">Key Outcome:</h4>
-                    <p style="font-size: 0.9em;">Demonstrated strong skills in **data visualization** and wrangling to deliver clear strategic insights.</p>
-                    <a href="https://github.com/Salonii07" target="_blank">View Code</a>
+    <main class="max-w-6xl mx-auto px-6 md:px-8">
+        
+        <section id="about" class="py-20 sm:py-24 md:py-28">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center text-slate-200">
+                <span class="highlight mr-4 text-xl sm:text-2xl font-mono">01.</span> About Me
+                <span class="h-px bg-slate-600 flex-grow ml-6"></span>
+            </h2>
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-2/3 space-y-4 text-sm sm:text-base">
+                    <p>
+                        Hello! I specialize in leveraging data to drive decision-making. [cite_start]My background is built on a solid foundation in Python (Pandas, NumPy), Advanced Excel, and writing efficient SQL queries for extraction and validation[cite: 103, 104, 113].
+                    </p>
+                    <p>
+                        [cite_start]My experience includes working as a Spatial Data Specialist, where I collected, cleaned, and analyzed large sets of geospatial and geolocation data[cite: 106]. [cite_start]I am proficient in using tools like Earthscape and ATLAS for data validation and reporting, and I thrive on stakeholder collaboration and requirements analysis[cite: 108, 113].
+                    </p>
+                    <p>
+                        [cite_start]I am dedicated to continuous learning, as shown by my coursework and certifications in data analytics and cloud computing[cite: 114]. I am eager to apply my skills in a challenging data science or business intelligence role.
+                    </p>
                 </div>
-                
-                <div class="project-card">
-                    <h3>Chess Game Logic Engine</h3>
-                    <p class="subtitle">Programming & Algorithm Design</p>
-                    <p>Developed a complete chess game using Python, focusing on the custom chess engine logic for the backend.</p>
-                    
-                    <h4 style="font-size: 1em; margin-bottom: 5px;">Technologies:</h4>
-                    <ul style="padding: 0;">
-                        <li>Python (Pygame, Custom Logic)</li>
-                    </ul>
-                    
-                    <h4 style="font-size: 1em; margin-bottom: 5px; margin-top: 10px;">Key Outcome:</h4>
-                    <p style="font-size: 0.9em;">Applied **Object-Oriented Programming (OOP)** principles and complex logical thinking to build a functional application.</p>
-                    <a href="https://github.com/Salonii07" target="_blank">View Code</a>
+                <div class="w-full md:w-1/3 mx-auto">
+                    <div class="relative group w-56 h-56 sm:w-64 sm:h-64 mx-auto cursor-pointer">
+                        <div class="absolute top-0 left-0 w-full h-full rounded-lg border-2 border-cyan-400 transition-all duration-300 group-hover:translate-x-3 group-hover:translate-y-3 animate-glow"></div>
+                        <div class="relative w-full h-full rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 group-hover:-translate-x-3 group-hover:-translate-y-3">
+                            <img src="https://placehold.co/600x600/0A192F/64ffda?text=Profile+Image" alt="Profile of Saloni Pawar" class="w-full h-full object-cover filter grayscale group-hover:filter-none transition-all duration-300">
+                            <div class="absolute inset-0 bg-cyan-700 mix-blend-multiply opacity-60 group-hover:opacity-0 transition-all duration-300"></div>
+                        </div>
+                    </div>
                 </div>
-                
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Professional Experience</h2>
-            
-            <div class="job-role">
-                <h3 style="color: #ffffff; margin-bottom: 5px;">Data Specialist | Here Technology Pvt. Ltd. | Aug 2022 – Sep 2023</h3>
-                <ul style="padding-left: 20px; margin-top: 0;">
-                    <li>**Data Analysis & Cleaning:** Collected, cleaned, and analyzed large sets of data.</li>
-                    <li>**Reporting & Insights:** Generated **daily Excel-based reports** with insights on trends.</li>
-                    <li>**Data Validation:** Utilized internal tools like Earthscape and ATLAS for data validation and reporting.</li>
-                </ul>
-            </div>
-            
-            <div class="job-role">
-                <h3 style="color: #ffffff; margin-bottom: 5px;">Intern - Operational Application (IT) | Sulzer Tech India Pvt. Ltd. | Feb 2025 – May 2025</h3>
-                <ul style="padding-left: 20px; margin-top: 0;">
-                    <li>**SQL Database Tasks:** Wrote **SQL queries in Snowflake** for data extraction and validation.</li>
-                    <li>**Data Transformation:** Explored basic data transformation using **DBT** with guidance.</li>
-                    <li>**System Analysis:** Analyzed phishing attempts using InfoSec IQ and MXToolbox, learning core domain security concepts.</li>
-                </ul>
             </div>
         </section>
         
-        <section id="education">
-            <h2>Education & Certifications</h2>
-            
-            <div style="display: flex; justify-content: space-between;">
+        <section id="skills" class="py-20 sm:py-24 md:py-28">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-12 flex items-center text-slate-200">
+                <span class="highlight mr-4 text-xl sm:text-2xl font-mono">02.</span> My Tech Stack
+                <span class="h-px bg-slate-600 flex-grow ml-6"></span>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <div style="width: 48%;">
-                    <h3 style="color: #ffffff; margin-bottom: 10px;">Academic Background</h3>
-                    <p><strong>Master of Computer Application (MCA)</strong></p>
-                    <p style="margin-top: -10px; color: #a8dadc;">University of Mumbai | CGPA: 8.02/10</p>
-                    
-                    <p><strong>Bachelor of Science in Information Technology (B.Sc. IT)</strong></p>
-                    <p style="margin-top: -10px; color: #a8dadc;">University of Mumbai | CGPA: 8.13/10</p>
+                <div class="p-6 glass-card rounded-lg space-y-3">
+                    <h3 class="text-xl font-bold highlight">Languages & Libraries</h3>
+                    <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-400">
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Python [cite: 113]</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">SQL [cite: 113]</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Pandas [cite: 113]</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">NumPy [cite: 113]</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Matplotlib / Seaborn [cite: 112]</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Basic HTML [cite: 113]</li>
+                    </ul>
                 </div>
                 
-                <div style="width: 48%;">
-                    <h3 style="color: #ffffff; margin-bottom: 10px;">Relevant Certifications</h3>
-                    <ul style="list-style: square; padding-left: 20px; color: #a8dadc;">
-                        <li>Python certification</li>
-                        <li>MySQL certification</li>
-                        <li>SQL (basic) from HackeRank</li>
-                        <li>Data Analytics from Anudeep Foundation</li>
-                        <li>Excel to SQL from LinkedIn Learning</li>
+                <div class="p-6 glass-card rounded-lg space-y-3">
+                    <h3 class="text-xl font-bold highlight">Tools & Databases</h3>
+                    <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-400">
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Advanced Excel [cite: 113]</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Snowflake (SQL) [cite: 109]</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">DBT (Basic) [cite: 110]</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">GIS Tools [cite: 107]</li>
+                        
+                    </ul>
+                </div>
+
+                 <div class="p-6 glass-card rounded-lg space-y-3">
+                    <h3 class="text-xl font-bold highlight">Soft Skills & Focus</h3>
+                    <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-400">
+                        <li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Data Validation/Cleaning</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Logical Thinking [cite: 113]</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Stakeholder Collaboration [cite: 113]</li>
+                        <li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Geospatial Analysis</li>
+                        [cite_start]<li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Requirements Analysis [cite: 113]</li>
                     </ul>
                 </div>
                 
             </div>
         </section>
 
-        <section id="contact">
-            <h2>Connect with Me</h2>
-            <p>I am actively seeking new opportunities. Let's connect!</p>
-            <div class="contact-links" style="margin-top: 15px;">
-                <a href="https://github.com/Salonii07" target="_blank">
-                    GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/saloni-pawar-0b0787279" target="_blank">
-                    LinkedIn
-                </a>
-                <a href="mailto:pawar.saloni07.2001@gmail.com">
-                    Email Me
-                </a>
+
+        <section id="experience" class="py-20 sm:py-24 md:py-28">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-12 flex items-center text-slate-200">
+                <span class="highlight mr-4 text-xl sm:text-2xl font-mono">03.</span> Where I've Worked
+                <span class="h-px bg-slate-600 flex-grow ml-6"></span>
+            </h2>
+            <div class="max-w-3xl">
+                
+                <div class="relative border-l-2 border-slate-700 ml-4 pl-8 py-4 mb-8">
+                    <div class="absolute -left-[11px] top-5 w-5 h-5 bg-cyan-400 rounded-full border-4 border-[#0A192F]"></div>
+                    <h3 class="text-xl font-bold text-slate-100">Spatial Data Specialist I</h3>
+                    <p class="text-md font-medium text-slate-300 mb-2">Here Technology Pvt. Ltd.</p>
+                    [cite_start]<p class="text-sm font-mono text-slate-400 mb-4">Aug 2022 - Sep 2023 [cite: 106]</p>
+                    <ul class="list-disc list-inside space-y-2 text-sm sm:text-base">
+                        [cite_start]<li>Collected, cleaned, and analyzed large sets of spatial and geolocation data[cite: 106].</li>
+                        [cite_start]<li>Built data-driven maps and visualizations using GIS tools for decision-making[cite: 107].</li>
+                        [cite_start]<li>Generated daily Excel-based reports with insights on geospatial trends[cite: 108].</li>
+                        [cite_start]<li>Utilized internal tools like Earthscape and ATLAS for data validation and reporting[cite: 108].</li>
+                    </ul>
+                </div>
+
+                <div class="relative border-l-2 border-slate-700 ml-4 pl-8 py-4">
+                    <div class="absolute -left-[11px] top-5 w-5 h-5 bg-cyan-400 rounded-full border-4 border-[#0A192F]"></div>
+                    <h3 class="text-xl font-bold text-slate-100">Intern - Operational Application (IT Department)</h3>
+                    <p class="text-md font-medium text-slate-300 mb-2">Sulzer Tech India Pvt. Ltd.</p>
+                    [cite_start]<p class="text-sm font-mono text-slate-400 mb-4">Feb 2025 - May 2025 [cite: 109]</p>
+                    <ul class="list-disc list-inside space-y-2 text-sm sm:text-base">
+                        [cite_start]<li>Wrote SQL queries in Snowflake for data extraction and validation tasks[cite: 109].</li>
+                        [cite_start]<li>Explored basic data transformation using DBT with guidance[cite: 110].</li>
+                        [cite_start]<li>Analyzed phishing attempts using InfoSec IQ and MXToolbox, learning about SPF, DKIM, and DMARC[cite: 110, 111].</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <footer>
-            <p>© 2025 Saloni Pawar. Built for professional presentation.</p>
+        <section id="projects" class="py-20 sm:py-24 md:py-28">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-12 flex items-center text-slate-200">
+                <span class="highlight mr-4 text-xl sm:text-2xl font-mono">04.</span> Things I've Built (Data & Logic)
+                <span class="h-px bg-slate-600 flex-grow ml-6"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="glass-card rounded-lg overflow-hidden flex flex-col group cursor-pointer">
+                    <div class="relative overflow-hidden">
+                        <img src="https://placehold.co/600x360/111827/64ffda?text=Netflix+Analysis" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Netflix Data Analysis Screenshot">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div>
+                            <p class="highlight font-mono text-sm">Featured Data Project</p>
+                            <h3 class="text-xl font-bold text-slate-100 mt-2 mb-3 group-hover:text-cyan-400 transition-colors">
+                                Netflix Data Analysis
+                            </h3>
+                            <p class="text-sm flex-grow">
+                                [cite_start]Performed comprehensive data analysis on a Netflix dataset to visualize trends in content type, duration, genres, and country-wise production[cite: 112].
+                            </p>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-400">
+                                <li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Python</li>
+                                <li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Pandas</li>
+                                <li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Matplotlib</li>
+                                <li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Seaborn</li>
+                            </ul>
+                            <div class="flex items-center gap-4 mt-4 text-slate-400">
+                                <a href="https://github.com/Salonii07" target="_blank" class="hover:text-cyan-400 transition-colors" aria-label="GitHub Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-lg overflow-hidden flex flex-col group cursor-pointer">
+                    <div class="relative overflow-hidden">
+                        <img src="https://placehold.co/600x360/111827/64ffda?text=Chess+Game+OOP" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Chess Game Screenshot">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div>
+                            <p class="highlight font-mono text-sm">Logic & OOP Showcase</p>
+                            <h3 class="text-xl font-bold text-slate-100 mt-2 mb-3 group-hover:text-cyan-400 transition-colors">
+                                Chess Game Development
+                            </h3>
+                            <p class="text-sm flex-grow">
+                                [cite_start]Developed a functional chess game using **Python**, applying Object-Oriented Programming (OOP) and complex algorithm design for the core game logic[cite: 111].
+                            </p>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-400">
+                                <li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Python</li>
+                                <li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Pygame</li>
+                                <li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">OOP</li>
+                                <li class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full">Algorithms</li>
+                            </ul>
+                            <div class="flex items-center gap-4 mt-4 text-slate-400">
+                                <a href="https://github.com/Salonii07" target="_blank" class="hover:text-cyan-400 transition-colors" aria-label="GitHub Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="education" class="py-20 sm:py-24 md:py-28">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-12 flex items-center text-slate-200">
+                <span class="highlight mr-4 text-xl sm:text-2xl font-mono">05.</span> Education & Certifications
+                <span class="h-px bg-slate-600 flex-grow ml-6"></span>
+            </h2>
+            <div class="max-w-4xl space-y-8">
+                <div class="glass-card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-slate-100">Master of Computer Application (MCA)</h3>
+                    <p class="text-md font-medium highlight mb-2">University of Mumbai</p>
+                    <p class="text-sm font-mono text-slate-400 mb-4">June 2023 – July 2025 | [cite_start]CGPA: 8.02/10 [cite: 111]</p>
+                </div>
+                 <div class="glass-card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-slate-100">Bachelor of Science in Information Technology (B.Sc. IT)</h3>
+                    <p class="text-md font-medium highlight mb-2">University of Mumbai</p>
+                    <p class="text-sm font-mono text-slate-400 mb-4">June 2019 – May 2022 | [cite_start]CGPA: 8.13/10 [cite: 111]</p>
+                </div>
+                
+                <h4 class="text-xl font-bold text-slate-100 pt-4">Key Certifications</h4>
+                <ul class="flex flex-wrap gap-3">
+                    [cite_start]<li class="px-4 py-2 bg-slate-800/50 highlight font-mono text-sm rounded-full border border-cyan-700">Python certification (ICIT) [cite: 114]</li>
+                    [cite_start]<li class="px-4 py-2 bg-slate-800/50 highlight font-mono text-sm rounded-full border border-cyan-700">MySQL certification (ICIT) [cite: 114]</li>
+                    [cite_start]<li class="px-4 py-2 bg-slate-800/50 highlight font-mono text-sm rounded-full border border-cyan-700">Data Analytics (Anudeep Foundation) [cite: 114]</li>
+                    [cite_start]<li class="px-4 py-2 bg-slate-800/50 highlight font-mono text-sm rounded-full border border-cyan-700">Excel to SQL (LinkedIn Learning) [cite: 114]</li>
+                    [cite_start]<li class="px-4 py-2 bg-slate-800/50 highlight font-mono text-sm rounded-full border border-cyan-700">SQL (Basic - HackeRank) [cite: 114]</li>
+                    [cite_start]<li class="px-4 py-2 bg-slate-800/50 highlight font-mono text-sm rounded-full border border-cyan-700">Cloud Computing (NPTEL) [cite: 114]</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 sm:py-24 md:py-28 text-center max-w-lg mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex flex-col items-center text-slate-200">
+                <span class="highlight mr-4 text-xl sm:text-2xl font-mono">06.</span> Get In Touch
+            </h2>
+            <p class="text-slate-400 mb-10">
+                I am actively seeking new opportunities in data analysis and business intelligence. Whether you have a challenging data problem or just want to chat about Python, feel free to reach out!
+            </p>
+            <div class="flex flex-col items-center space-y-4">
+                <a href="mailto:pawar.saloni07.2001@gmail.com" class="cta-button">Email Me Directly</a>
+                [cite_start]<p class="text-sm font-mono text-slate-400 pt-4">pawar.saloni07.2001@gmail.com [cite: 114]</p>
+                <div class="flex items-center gap-6 pt-4 text-slate-400">
+                    <a href="https://www.linkedin.com/in/saloni-pawar-0b0787279" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-cyan-400 transition-colors">
+                       <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="https://github.com/Salonii07" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="hover:text-cyan-400 transition-colors">
+                       <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-10 text-xs font-mono text-slate-500">
+            <p>Designed and Built by Saloni Pawar, Inspired by the Modern Portfolio Style.</p>
         </footer>
-    </div>
+    </main> 
 </body>
 </html>
